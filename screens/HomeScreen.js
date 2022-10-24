@@ -4,6 +4,7 @@ import tw from 'tailwind-react-native-classnames';
 import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_API_KEY } from "@env";
+import { SECRET_KEY } from '../secret';
 
 const HomeScreen = () => {
   return (
@@ -38,7 +39,7 @@ const HomeScreen = () => {
             enablePoweredByContainer={false}
             minLength={2}
             query={{
-                key:"AIzaSyA6ZZDly78okgbHmipFXFtUfr6lDLwn7-E",
+                key:SECRET_KEY,//env was not working so this way 🥵
                 language:"en",
             }}
             nearbyPlacesAPI='GooglePlaceSearch'//search in google's list of stored places
