@@ -17,7 +17,6 @@ const HomeScreen = () => {
             }}
             source={{
                 uri:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.similarpng.com%2Fthumbnail%2F2020%2F09%2FYellow-taxi-sign-on-transparent-background-PNG.png&f=1&nofb=1&ipt=aab9bb39dc64cfde5bb0af001ee3519cb998b983ef2497079a6d2ed30a3d25c9&ipo=images"
-                //uri:"https://links/papareact.com/gzs"
             }}
         />
         <GooglePlacesAutocomplete 
@@ -44,6 +43,7 @@ const HomeScreen = () => {
             }}
             nearbyPlacesAPI='GooglePlaceSearch'//search in google's list of stored places
             debounce={400}//search only after user has stopped typing for 400ms
+            onFail={error => console.error(error)}
         />
 
         <NavOptions/>
