@@ -2,6 +2,8 @@ import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames';
 import NavOptions from "../components/NavOptions";
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { GOOGLE_MAPS_API_KEY } from "@env";
 
 const HomeScreen = () => {
   return (
@@ -17,6 +19,31 @@ const HomeScreen = () => {
                 uri:"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.similarpng.com%2Fthumbnail%2F2020%2F09%2FYellow-taxi-sign-on-transparent-background-PNG.png&f=1&nofb=1&ipt=aab9bb39dc64cfde5bb0af001ee3519cb998b983ef2497079a6d2ed30a3d25c9&ipo=images"
                 //uri:"https://links/papareact.com/gzs"
             }}
+        />
+        <GooglePlacesAutocomplete 
+            placeholder="Where from?"
+            styles={{
+                container:{
+                    flex:0,
+                },
+                textInput:{
+                    fontSize:18,
+                }
+            }}
+            onPress={(data, details = null) => {
+                console.log(data);
+                console.log(details);
+            }}
+            fetchDetails={true}//details include geog. coordinates etc.
+            returnKeyType={"search"}
+            enablePoweredByContainer={false}
+            minLength={2}
+            query={{
+                key:"AIzaSyA6ZZDly78okgbHmipFXFtUfr6lDLwn7-E",
+                language:"en",
+            }}
+            nearbyPlacesAPI='GooglePlaceSearch'//search in google's list of stored places
+            debounce={400}//search only after user has stopped typing for 400ms
         />
 
         <NavOptions/>
