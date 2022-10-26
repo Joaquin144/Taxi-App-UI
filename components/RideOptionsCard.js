@@ -51,7 +51,7 @@ const RideOptionsCard = () => {
         >
           <Icon name="chevron-left" type="fontawesome" />
         </TouchableOpacity>
-        <Text style={tw`text-center py-5 text-xl`}>Select a Ride - {travelTimeInformation?.distance.text}</Text>
+        <Text style={tw`text-center py-5 text-xl`}>Select a Ride - {travelTimeInformation?.distance?.text}</Text>
       </View>
       <FlatList
         data={data}
@@ -65,22 +65,22 @@ const RideOptionsCard = () => {
           >
             <Image
               style={{
-                width: 100,
-                height: 100,
+                width: 80,
+                height: 80,
                 resizeMode: "contain",
               }}
               source={{ uri: item.image }}
             />
-            <View style={tw`-ml-6`}>
+            <View style={tw`-ml-1`}>
               <Text style={tw`text-xl font-semibold`}>{item.title}</Text>
-              <Text>{travelTimeInformation?.duration.text} Travel Time</Text>
+              <Text>{travelTimeInformation?.duration?.text}</Text>
             </View>
             <Text style={tw`text-xl`}>
                 {new Intl.NumberFormat('en-gb', {
                     style:'currency',
                     currency: 'INR'
                 }).format(
-                    (travelTimeInformation?.duration.value * SURGE_CHARGE_RATE * item.multiplier) / 4.5
+                    (travelTimeInformation?.duration?.value * SURGE_CHARGE_RATE * item.multiplier) / 8
                 )}
                 {/* {`${(travelTimeInformation?.duration.value * SURGE_CHARGE_RATE * multiplier) / 100}`} */}
             </Text>
